@@ -7,30 +7,43 @@
  ```
 
 ---
+# 1 Introdução
+## 1.1 Propósito
 
-# 🚀 Funcionalidades Principais Cadastro de Pacientes
+## 1.2 Escopo
 
- (RF-001): Registro obrigatório com validações para nome completo, CPF, telefone, data de nascimento, endereço e convênio. Edição e Gestão de Perfil (RF-002): Permissão para atualizar e alterar dados de pacientes cadastrados a qualquer momento.
+## 1.3 Contexto
 
-- Remoção de Clientes (RF-003): Exclusão definitiva de perfis de pacientes.
+A aplicação permite que piscicologos - ou secretarios - administrem todas as informações de seus pacientes em um só lugar. Os dias de terapia, dados de pagamento, dados sensiveis dos pacientes ficam armazenados no mesmo sistema, facilitando na hora de acesso. O administrador, pode criar uma conta, fazer login, cadastrar um paciente - administrar os dados desse paciente, ou seja, atualizar ou apagar - Administrar sessôes de terapia - ou seja, marcar, remarcar e cancelar - E gerenciar as finançãs da clínica.
 
-- Extrato Financeiro Dinâmico (RF-004): Apresentação detalhada das movimentações de entradas e saídas.
+## 1.4
 
-- Navegação e Interface Interativa (RF-005): Painel acessível para transição rápida entre a agenda de atendimentos, cadastro e fluxo financeiro.
+# 2 Descrição
 
----
+## 2.1 Funções Principais
+O sistema permite que o administrador:
 
-# 📐 Engenharia de Requisitos (Padrão ISO 29148) 
+- crie uma conta
+- Faça login
+- Cadastre novos pacientes
+- Atualize os dados de seus pacientes
+- Apague os dados de sues pacientes
+- Vissualize todos os nomes de seus pacientes de um só vez
+- Vissualize todos os dados de apenas um paciente em esspecífico
+- Marque sessões de terapia
+- Remarque essas sessões
+- Cancele as sessões
+- Atualize os status das sessões (cancelada, realizada)
+- Vissualize as sessões em sue calendario
+- Faça logout 
 
-A arquitetura do software foi guiada estritamente pela documentação de requisitos para garantir consistência lógica e regras bem definidas:
+## 2.3 Classes de usuários
+```
+|**TIPO DE USER**|**DESCRIÇÃO**|**PERMISSÕES**                        |
+|Administrador   | Pessoa que possui conta criada logada em uma sessão| Pode gerenciar as informações de pacientes, sessões de terapias e o movimento financeiro|
+```
 
-## Regras de Negócio Fundamentais (RN)
-
-- RN-001 (Valor da Consulta): Definição do valor padrão de R$ 200,00 para cada consulta agendada. RN-002 (Liberação de Atendimento): Sessões subsequentes à primeira só são liberadas caso a consulta anterior já tenha a confirmação de pagamento.
-
----
-
-# 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
  ### O projeto foi construído focando em uma arquitetura limpa e padrão procedural seguro:
   - **Linguagem Backend:** PHP (PDO para acesso ao banco de dados com prepared statements)
@@ -38,8 +51,40 @@ A arquitetura do software foi guiada estritamente pela documentação de requisi
   - **Frontend:** HTML5, CSS3
   - **Ferramentas de Desenvolvimento:** VS Code, Git e GitHub.
 
----
-**ESTRUTURA COMPLETA DO PROJETO:**
+
+
+# 3 Requisitos e Regras de Negócio
+ ## Engenharia de Requisitos (Padrão ISO 29148) 
+A arquitetura do software foi guiada estritamente pela documentação de requisitos para garantir consistência lógica e regras bem definidas:
+
+## 3.1 Definições e acrônimos
+|**TERMO**|**DEFINIÇÕES**|
+|CRUD|Sigla representativa para Create, Read, Update and Delete|
+|DER| Diagrama Entidade-Relacionamento|
+|RF|Requisito Funcional|
+|RNF|Requisito Não Funcional|
+|RN|Regra de Negócio|
+
+## 3.2 Requisistos Funcionais (RF)
+- (RF-001): Registro obrigatório com validações para nome completo, CPF, telefone, data de nascimento, endereço e convênio.
+
+- Edição e Gestão de Perfil (RF-002): Permissão para atualizar e alterar dados de pacientes cadastrados a qualquer momento.
+
+- Remoção de Clientes (RF-003): Exclusão definitiva de perfis de pacientes.
+
+- Extrato Financeiro Dinâmico (RF-004): Apresentação detalhada das movimentações de entradas e saídas.
+
+- Navegação e Interface Interativa (RF-005): Painel acessível para transição rápida entre a agenda de atendimentos, cadastro e fluxo financeiro.
+
+  ## 3.3 Requisistos não funcionais (RNF)
+
+  ## 3.4 Regras de Negócio (RN)
+  - RN-001 (Valor da Consulta): Definição do valor padrão de R$ 200,00 para cada consulta agendada.
+  
+-  RN-002 (Liberação de Atendimento): Sessões subsequentes à primeira só são liberadas caso a consulta anterior já tenha a confirmação de pagamento.
+
+
+## 4 Estrutura do projeto
 
 ```bash
 \ clinica_arco_iris
@@ -122,8 +167,9 @@ A arquitetura do software foi guiada estritamente pela documentação de requisi
         backup_clinica.sql - dump do banco
 ```
 
+## 5 Banco de dados
 
-                 DER do Banco de Dados:
+# 5.1 DER
 ```mermaid
 erDiagram
 
@@ -186,64 +232,79 @@ erDiagram
     PACIENTE ||--o{ CONSULTA : "Possui"
     
 ```
-<hr>
 
-# Acesse os demais arquivos:
+# 5.2 Dicionário de Dados
 
-- Acesse a [**documentação completa**](documentacao/documentacao.md)
+# 6 Product Backlog
 
- -  Acesse o [**dicionário de dados**](documentacao/banco_de_dados/dicionario_dados_arcoires.xlsx)
-
-
-# 🎨 Design e Apresentação: 
+# 7 Design
 - Você pode acessar a **prototipagem:** 👉 [Acessar Projeto no Canva](https://canva.link/pztms13j0ivh8h6)
 
 
 - Você pode acessar a apresentação visual: 👉 [Ver Projeto no Canva]()
 
----
 
-  ## COMO EXECUTAR A APLICAÇÃO: 
+# 8 COMO EXECUTAR A APLICAÇÃO: 
 ### Requisitos
 
 - PostgreSQL instalado e em execução.
 - PHP instalado, com as extensões `PDO` e `pdo_pgsql` habilitadas.
 - Os arquivos deste repositório.
+- Navegador Web
+
+  ---
 
 ### 1. Obter os arquivos do projeto
 Clone este repositório:
 
- abra o terminal e execulte:
+ abra o terminal, git bash ou o prompt de comando e execulte:
 
 ```bash
-# acesse o repositório:
 git clone https://github.com/dudamarrtiins/clinica-arco-iris.git
+```
 
-# acesse a pasta do projeto:
+- acesse a pasta desejada:
+```bash
 cd clinica_arco_ires
 ```
 
-### 2. Criar o usuário e o banco de dados
 
-- Baixe o XAMP, Moba ou outro app para utilizar para a manipulação da aplicação.
-- Baixe o Pgadim4 ou o Postgres si necessario.
+### 2. Criar o usuário e o banco de dados
+Conecte-se ao Postgres:
+
+- abra o terminal, git bash ou o prompt de comando e execulte:
+- ```bash
+  psql -U postgres
+  ```
 
 Acesse o Postgres e crie um novo banco de dados e um novo usuario
 
+- crie um novo usuario:
 ```sql
 CREATE USER root WITH PASSWORD 'arcoires';
+```
+
+- crie um novo database e atribua a propriedade dele ao usuario criado:
+```sql
 CREATE DATABASE arcoires OWNER root;
 ```
 
-### 3. Criar as tabelas
-
-Na pasta principal do projeto, o arquivo com a estrutura do banco fica em `database/arcoires.sql`. Execute-o no banco `arcoires` usando o terminal:
-
-```bash
-psql -U root -d arcoires -f database/arcoires.sql
+- confira se tudo ocorreu como deveria:
+```sql
+\l
 ```
 
-Quando solicitado, informe a senha do usuário `root`. Esse comando cria as tabelas necessárias para a aplicação. 
+- saia do login do postgres, com o comando:
+  ```sql
+  \q
+  ```
+### 3. Restaurar o database
+  - Certifiquesse que esta na raiz do projeto (pasta principal) e execulte o comando a baixo para restaurar o banco.o arquivo com a estrutura do banco fica em `database/arcoires.sql`. Execute-o no banco `arcoires` usando o terminal::
+
+  ```sql
+  psql -U root -d arcoires -f dump.sql
+  ```
+Quando solicitado, informe a senha do usuário `root`. Esse comando cria as tabelas necessárias para a aplicação
 
 
 ### 4. Configurar a conexão da aplicação
