@@ -5,7 +5,7 @@ session_start(); // inicia a sessão
 
 // se já estiver logado, redireciona para o painel.php
 if (isset($_SESSION['id'])) {
-    header("Location: /../painel.php");
+    header("Location: ../painel.php");
     exit();
 }
 
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if ($usuario && $usuario['email'] == $_POST['email'] && $usuario['senha'] == $_POST['senha']) {
         $_SESSION['id'] = $usuario['id']; // salva o ID na sessão que já está aberta
-        header("Location: /../painel.php");
+        header("Location: ../painel.php");
         exit();
     } else {
         $erro_login = "Usuário ou senha inválidos.";

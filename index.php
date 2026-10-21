@@ -105,9 +105,9 @@
 
         <div class="card-portal"> <!--div para o CSS (div 2)-->
             <p>Já possui uma conta?</p>
-            <a href="clinica_arco_iris/login/login.php">Clique aqui para logar</a> <!--btn-->
+            <a href="/clinica_arco_iris/login/login.php">Clique aqui para logar</a> <!--btn-->
             <p>Não possui uma conta?</p>
-            <a href="clinica_arco_iris/login/cadastrar.php">Cadastra-se</a> <!--btn-->
+            <a href="/clinica_arco_iris/login/cadastrar.php">Cadastra-se</a> <!--btn-->
         </div> <!--fim da div 2-->
     </main>
 

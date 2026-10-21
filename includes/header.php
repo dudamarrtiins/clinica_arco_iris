@@ -62,17 +62,17 @@
 <header>
     <nav>
         <div> <!--btns para navegar-->
-        <a href="../painel.php">Dashboard</a>
+        <a href="/clinica_arco_iris/painel.php">Dashboard</a>
 
-        <a href="agenda.php">Agenda  </a>
+        <a href="/clinica_arco_iris/app/agenda.php">Agenda  </a>
 
-        <a href="prontuario.php">Prontuário </a>
+        <a href="/clinica_arco_iris/app/prontuario.php">Prontuário </a>
 
-        <a href="consultar.php">Consultar </a>
+        <a href="/clinica_arco_iris/app/consultar.php">Consultar </a>
 
-        <a href="gestao.php">Gestao </a>
+        <a href="/clinica_arco_iris/app/gestao.php">Gestao </a>
 
-        <a href="../login/logout.php">Sair </a>
+        <a href="/clinica_arco_iris/login/logout.php">Sair </a>
         </div>
     </nav>
 

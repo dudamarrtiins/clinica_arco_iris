@@ -2,12 +2,10 @@
 -- PostgreSQL database dump
 --
 
-\restrict OalQOiBsTcbGxaWPI8nQyRj9IT93NszXpfwq49YfiYZrPMrCszPCUfrL40rt1pl
+\restrict 8l3YqA7AVtbCwxjx8hdQcuzV63T2wnoS9QbIbICUaAIdhDhPpoyxTWoeFABDXVy
 
--- Dumped from database version 17.11
--- Dumped by pg_dump version 17.11
-
--- Started on 2026-10-14 00:09:09
+-- Dumped from database version 18.6 (Ubuntu 18.6-0ubuntu0.26.04.1)
+-- Dumped by pg_dump version 18.6 (Ubuntu 18.6-0ubuntu0.26.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +24,6 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 224 (class 1259 OID 16423)
 -- Name: consultas; Type: TABLE; Schema: public; Owner: root
 --
 
@@ -43,11 +40,10 @@ CREATE TABLE public.consultas (
 ALTER TABLE public.consultas OWNER TO root;
 
 --
--- TOC entry 223 (class 1259 OID 16422)
--- Name: consulta_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: consultas_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
-CREATE SEQUENCE public.consulta_id_seq
+CREATE SEQUENCE public.consultas_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -56,19 +52,16 @@ CREATE SEQUENCE public.consulta_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.consulta_id_seq OWNER TO root;
+ALTER SEQUENCE public.consultas_id_seq OWNER TO root;
 
 --
--- TOC entry 4946 (class 0 OID 0)
--- Dependencies: 223
--- Name: consulta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: consultas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
-ALTER SEQUENCE public.consulta_id_seq OWNED BY public.consultas.id;
+ALTER SEQUENCE public.consultas_id_seq OWNED BY public.consultas.id;
 
 
 --
--- TOC entry 226 (class 1259 OID 16435)
 -- Name: entrada; Type: TABLE; Schema: public; Owner: root
 --
 
@@ -76,14 +69,15 @@ CREATE TABLE public.entrada (
     id integer NOT NULL,
     valor_entrada numeric(15,2),
     dia date,
-    id_usuario integer
+    id_usuario integer,
+    nomepaciente character varying(90),
+    metodo character varying(30)
 );
 
 
 ALTER TABLE public.entrada OWNER TO root;
 
 --
--- TOC entry 225 (class 1259 OID 16434)
 -- Name: entrada_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
@@ -99,8 +93,6 @@ CREATE SEQUENCE public.entrada_id_seq
 ALTER SEQUENCE public.entrada_id_seq OWNER TO root;
 
 --
--- TOC entry 4947 (class 0 OID 0)
--- Dependencies: 225
 -- Name: entrada_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
@@ -108,7 +100,6 @@ ALTER SEQUENCE public.entrada_id_seq OWNED BY public.entrada.id;
 
 
 --
--- TOC entry 220 (class 1259 OID 16404)
 -- Name: paciente; Type: TABLE; Schema: public; Owner: root
 --
 
@@ -127,7 +118,6 @@ CREATE TABLE public.paciente (
 ALTER TABLE public.paciente OWNER TO root;
 
 --
--- TOC entry 219 (class 1259 OID 16403)
 -- Name: paciente_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
@@ -143,8 +133,6 @@ CREATE SEQUENCE public.paciente_id_seq
 ALTER SEQUENCE public.paciente_id_seq OWNER TO root;
 
 --
--- TOC entry 4948 (class 0 OID 0)
--- Dependencies: 219
 -- Name: paciente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
@@ -152,7 +140,6 @@ ALTER SEQUENCE public.paciente_id_seq OWNED BY public.paciente.id;
 
 
 --
--- TOC entry 228 (class 1259 OID 16442)
 -- Name: saida; Type: TABLE; Schema: public; Owner: root
 --
 
@@ -160,14 +147,14 @@ CREATE TABLE public.saida (
     id integer NOT NULL,
     valor_saida numeric,
     dia date,
-    id_usuario integer
+    id_usuario integer,
+    motivo character varying(90)
 );
 
 
 ALTER TABLE public.saida OWNER TO root;
 
 --
--- TOC entry 227 (class 1259 OID 16441)
 -- Name: saida_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
@@ -183,8 +170,6 @@ CREATE SEQUENCE public.saida_id_seq
 ALTER SEQUENCE public.saida_id_seq OWNER TO root;
 
 --
--- TOC entry 4949 (class 0 OID 0)
--- Dependencies: 227
 -- Name: saida_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
@@ -192,7 +177,6 @@ ALTER SEQUENCE public.saida_id_seq OWNED BY public.saida.id;
 
 
 --
--- TOC entry 222 (class 1259 OID 16411)
 -- Name: telefone; Type: TABLE; Schema: public; Owner: root
 --
 
@@ -206,7 +190,6 @@ CREATE TABLE public.telefone (
 ALTER TABLE public.telefone OWNER TO root;
 
 --
--- TOC entry 221 (class 1259 OID 16410)
 -- Name: telefone_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
@@ -222,8 +205,6 @@ CREATE SEQUENCE public.telefone_id_seq
 ALTER SEQUENCE public.telefone_id_seq OWNER TO root;
 
 --
--- TOC entry 4950 (class 0 OID 0)
--- Dependencies: 221
 -- Name: telefone_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
@@ -231,7 +212,6 @@ ALTER SEQUENCE public.telefone_id_seq OWNED BY public.telefone.id;
 
 
 --
--- TOC entry 218 (class 1259 OID 16393)
 -- Name: usuarios; Type: TABLE; Schema: public; Owner: root
 --
 
@@ -245,7 +225,6 @@ CREATE TABLE public.usuarios (
 ALTER TABLE public.usuarios OWNER TO root;
 
 --
--- TOC entry 217 (class 1259 OID 16392)
 -- Name: usuarios_id_seq; Type: SEQUENCE; Schema: public; Owner: root
 --
 
@@ -261,8 +240,6 @@ CREATE SEQUENCE public.usuarios_id_seq
 ALTER SEQUENCE public.usuarios_id_seq OWNER TO root;
 
 --
--- TOC entry 4951 (class 0 OID 0)
--- Dependencies: 217
 -- Name: usuarios_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
 --
 
@@ -270,15 +247,13 @@ ALTER SEQUENCE public.usuarios_id_seq OWNED BY public.usuarios.id;
 
 
 --
--- TOC entry 4770 (class 2604 OID 16426)
 -- Name: consultas id; Type: DEFAULT; Schema: public; Owner: root
 --
 
-ALTER TABLE ONLY public.consultas ALTER COLUMN id SET DEFAULT nextval('public.consulta_id_seq'::regclass);
+ALTER TABLE ONLY public.consultas ALTER COLUMN id SET DEFAULT nextval('public.consultas_id_seq'::regclass);
 
 
 --
--- TOC entry 4772 (class 2604 OID 16438)
 -- Name: entrada id; Type: DEFAULT; Schema: public; Owner: root
 --
 
@@ -286,7 +261,6 @@ ALTER TABLE ONLY public.entrada ALTER COLUMN id SET DEFAULT nextval('public.entr
 
 
 --
--- TOC entry 4768 (class 2604 OID 16407)
 -- Name: paciente id; Type: DEFAULT; Schema: public; Owner: root
 --
 
@@ -294,7 +268,6 @@ ALTER TABLE ONLY public.paciente ALTER COLUMN id SET DEFAULT nextval('public.pac
 
 
 --
--- TOC entry 4773 (class 2604 OID 16445)
 -- Name: saida id; Type: DEFAULT; Schema: public; Owner: root
 --
 
@@ -302,7 +275,6 @@ ALTER TABLE ONLY public.saida ALTER COLUMN id SET DEFAULT nextval('public.saida_
 
 
 --
--- TOC entry 4769 (class 2604 OID 16414)
 -- Name: telefone id; Type: DEFAULT; Schema: public; Owner: root
 --
 
@@ -310,7 +282,6 @@ ALTER TABLE ONLY public.telefone ALTER COLUMN id SET DEFAULT nextval('public.tel
 
 
 --
--- TOC entry 4767 (class 2604 OID 16396)
 -- Name: usuarios id; Type: DEFAULT; Schema: public; Owner: root
 --
 
@@ -318,16 +289,14 @@ ALTER TABLE ONLY public.usuarios ALTER COLUMN id SET DEFAULT nextval('public.usu
 
 
 --
--- TOC entry 4783 (class 2606 OID 16428)
--- Name: consultas consulta_pkey; Type: CONSTRAINT; Schema: public; Owner: root
+-- Name: consultas consultas_pkey; Type: CONSTRAINT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY public.consultas
-    ADD CONSTRAINT consulta_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT consultas_pkey PRIMARY KEY (id);
 
 
 --
--- TOC entry 4785 (class 2606 OID 16440)
 -- Name: entrada entrada_pkey; Type: CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -336,7 +305,6 @@ ALTER TABLE ONLY public.entrada
 
 
 --
--- TOC entry 4779 (class 2606 OID 16409)
 -- Name: paciente paciente_pkey; Type: CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -345,7 +313,6 @@ ALTER TABLE ONLY public.paciente
 
 
 --
--- TOC entry 4787 (class 2606 OID 16449)
 -- Name: saida saida_pkey; Type: CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -354,7 +321,6 @@ ALTER TABLE ONLY public.saida
 
 
 --
--- TOC entry 4781 (class 2606 OID 16416)
 -- Name: telefone telefone_pkey; Type: CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -363,7 +329,6 @@ ALTER TABLE ONLY public.telefone
 
 
 --
--- TOC entry 4775 (class 2606 OID 16402)
 -- Name: usuarios usuarios_email_key; Type: CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -372,7 +337,6 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 4777 (class 2606 OID 16400)
 -- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -381,16 +345,14 @@ ALTER TABLE ONLY public.usuarios
 
 
 --
--- TOC entry 4791 (class 2606 OID 16429)
--- Name: consultas consulta_id_paciente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: consultas consultas_id_paciente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
 ALTER TABLE ONLY public.consultas
-    ADD CONSTRAINT consulta_id_paciente_fkey FOREIGN KEY (id_paciente) REFERENCES public.paciente(id);
+    ADD CONSTRAINT consultas_id_paciente_fkey FOREIGN KEY (id_paciente) REFERENCES public.paciente(id);
 
 
 --
--- TOC entry 4792 (class 2606 OID 16457)
 -- Name: consultas consultas_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -399,7 +361,6 @@ ALTER TABLE ONLY public.consultas
 
 
 --
--- TOC entry 4793 (class 2606 OID 16462)
 -- Name: entrada entrada_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -408,7 +369,6 @@ ALTER TABLE ONLY public.entrada
 
 
 --
--- TOC entry 4788 (class 2606 OID 16472)
 -- Name: paciente fk_paciente_usuario; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -417,7 +377,6 @@ ALTER TABLE ONLY public.paciente
 
 
 --
--- TOC entry 4789 (class 2606 OID 16452)
 -- Name: paciente paciente_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -426,7 +385,6 @@ ALTER TABLE ONLY public.paciente
 
 
 --
--- TOC entry 4794 (class 2606 OID 16467)
 -- Name: saida saida_id_usuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -435,7 +393,6 @@ ALTER TABLE ONLY public.saida
 
 
 --
--- TOC entry 4790 (class 2606 OID 16417)
 -- Name: telefone telefone_id_paciente_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
 --
 
@@ -444,19 +401,8 @@ ALTER TABLE ONLY public.telefone
 
 
 --
--- TOC entry 4945 (class 0 OID 0)
--- Dependencies: 5
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: pg_database_owner
---
-
-GRANT ALL ON SCHEMA public TO root;
-
-
--- Completed on 2026-10-14 00:09:09
-
---
 -- PostgreSQL database dump complete
 --
 
-\unrestrict OalQOiBsTcbGxaWPI8nQyRj9IT93NszXpfwq49YfiYZrPMrCszPCUfrL40rt1pl
+\unrestrict 8l3YqA7AVtbCwxjx8hdQcuzV63T2wnoS9QbIbICUaAIdhDhPpoyxTWoeFABDXVy
 
