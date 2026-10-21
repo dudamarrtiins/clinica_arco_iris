@@ -64,15 +64,15 @@
         <div> <!--btns para navegar-->
         <a href="../painel.php">Dashboard</a>
 
-        <a href="app/agenda.php">Agenda  </a>
+        <a href="agenda.php">Agenda  </a>
 
-        <a href="app/prontuario.php">Prontuário </a>
+        <a href="prontuario.php">Prontuário </a>
 
-        <a href="app/consultar.php">Consultar </a>
+        <a href="consultar.php">Consultar </a>
 
-        <a href="app/gestao.php">Gestao </a>
+        <a href="gestao.php">Gestao </a>
 
-        <a href="login/logout.php">Sair </a>
+        <a href="../login/logout.php">Sair </a>
         </div>
     </nav>
 

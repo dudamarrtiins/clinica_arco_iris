@@ -6,6 +6,11 @@ require_once __DIR__ . '/../database/connect.php';
 //            CREATE - CADASTRAR PACIENTE/ ADICIONAR
 function cadastrar($conexao, $nome, $cpf, $nasc, $idade, $convenio, $sexo, $telefone)
 {
+      if ($idade < 3) {
+        echo "Erro: O paciente precisa ter no mínimo 3 anos de idade!";
+        return; // Aborta a execução antes de preparar o SQL
+    }
+
     require_once __DIR__ . '/../database/connect.php'; // mostra o caminho 
 
     // Pega o ID do usuário conectado na sessão atual
@@ -230,22 +235,26 @@ function consultar($conexao, $nome) // passando os parametros
 
 function entrada($conexao, $valor_entrada, $dia, $nomePaciente, $metodo) // passando os parametros
 {
+    // Validação: aceita apenas o valor 200 (seja número ou string "200" / "200.00")
+    if ((float)$valor_entrada != 200.00) {
+        echo " O valor da entrada deve ser exatamente R$ 200,00!";
+        return; // Encerra a função e não executa o INSERT
+    }
+
     require_once __DIR__ . '/../database/connect.php'; // mostra o caminho 
 
     // Pega o ID do usuário conectado na sessão atual
     $id_usuario = $_SESSION['id'];
 
     $sql = "INSERT INTO entrada (valor_entrada, dia, id_usuario, nomepaciente, metodo) VALUES (:entrada, :dia, :id_usuario, :nomepaciente, :metodo)";  
-    // sql = adicione na tabela entrada (colunas) os valores (valores recebidos no forms) onde o id do usuario for igual ao id do user logado
 
     try { // ta atribuindo os valores para as colunas
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(":entrada", $valor_entrada);
         $stmt->bindParam(":dia", $dia);
-        $stmt->bindParam(":id_usuario", $id_usuario,);
-        $stmt->bindParam(":nomepaciente", $nomePaciente,);
-        $stmt->bindParam(":metodo", $metodo, 
-        PDO::PARAM_INT);
+        $stmt->bindParam(":id_usuario", $id_usuario);
+        $stmt->bindParam(":nomepaciente", $nomePaciente);
+        $stmt->bindParam(":metodo", $metodo, PDO::PARAM_INT);
 
         $stmt->execute();// execultando
 
@@ -254,8 +263,7 @@ function entrada($conexao, $valor_entrada, $dia, $nomePaciente, $metodo) // pass
     } catch (PDOException $e) { // tratamento de erro
         echo "Erro: " . $e->getMessage();
     }
-} // terminada, não mexer
-
+}
 
 
 //                                               SAIDA DE DINHEIRO - GESTAO

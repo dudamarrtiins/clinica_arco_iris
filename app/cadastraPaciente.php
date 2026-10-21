@@ -169,7 +169,7 @@ require_once __DIR__ . '/../includes/functions.php';
             <input type="date" name="nasc" id="nasc">
 
             <label for="idade">Idade: </label> <!--pegando a idade-->
-            <input type="number" name="idade" id="idade"placeholder="00">
+            <input type="number" name="idade" id="idade" min="3" placeholder="00">
 
             <label for="convenio">Convenio: </label> <!--pegando o convenio-->
             <input type="text" name="convenio" id="convenio" placeholder="nome do convenio">
