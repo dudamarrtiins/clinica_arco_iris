@@ -260,12 +260,12 @@ Clone este repositório:
  abra o terminal, git bash ou o prompt de comando e execulte:
 
 ```bash
-git clone https://github.com/dudamarrtiins/clinica-arco-iris.git
+git clone https://github.com/dudamarrtiins/clinica_arco_iris.git
 ```
 
 - acesse a pasta desejada:
 ```bash
-cd clinica_arco_ires
+cd clinica_arco_iris
 ```
 
 
@@ -302,7 +302,7 @@ CREATE DATABASE arcoires OWNER root;
   - Certifiquesse que esta na raiz do projeto (pasta principal) e execulte o comando a baixo para restaurar o banco.o arquivo com a estrutura do banco fica em `database/arcoires.sql`. Execute-o no banco `arcoires` usando o terminal::
 
   ```sql
-  psql -U root -d arcoires -f dump.sql
+  psql -U root -d arcoires -f arcoires.sql
   ```
 Quando solicitado, informe a senha do usuário `root`. Esse comando cria as tabelas necessárias para a aplicação
 
