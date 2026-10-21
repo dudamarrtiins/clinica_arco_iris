@@ -6,38 +6,42 @@ require_once __DIR__ . '/../database/connect.php';
 //            CREATE - CADASTRAR PACIENTE/ ADICIONAR
 function cadastrar($conexao, $nome, $cpf, $nasc, $idade, $convenio, $sexo, $telefone)
 {
-      if ($idade < 3) {
-        echo "Erro: O paciente precisa ter no mínimo 3 anos de idade!";
-        return; // Aborta a execução antes de preparar o SQL
+    // CALCULO EXCLUSIVO EM PHP (Sem JavaScript)
+    if (!empty($nasc)) {
+        $dataNascimento = new DateTime($nasc);
+        $hoje = new DateTime();
+        // Calcula a diferença em anos exatos
+        $idade = $hoje->diff($dataNascimento)->y; 
     }
 
-    require_once __DIR__ . '/../database/connect.php'; // mostra o caminho 
+    // Validação da idade mínima
+    if ($idade < 3) {
+        echo "Erro: O paciente precisa ter no mínimo 3 anos de idade!";
+        return; // Aborta antes de salvar no banco
+    }
 
-    // Pega o ID do usuário conectado na sessão atual
-    
+    require_once __DIR__ . '/../database/connect.php'; 
+
     $id_usuario = $_SESSION['id'];
 
-    $sql = "INSERT INTO paciente (nome, cpf, nasc, idade, convenio, sexo, id_usuario) VALUES (:nome, :cpf, :nasc, :idade, :convenio, :sexo, :id_usuario)"; // sql coloque tais coisas nas seguintes colunas com as seguintes informações que estão sendo puxadas do forms 
+    $sql = "INSERT INTO paciente (nome, cpf, nasc, idade, convenio, sexo, id_usuario) 
+            VALUES (:nome, :cpf, :nasc, :idade, :convenio, :sexo, :id_usuario)";
 
-    try { // ta atribuindo os valores para as colunas
+    try {
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":cpf", $cpf);
         $stmt->bindParam(":nasc", $nasc);
-        $stmt->bindParam(":idade", $idade);
+        $stmt->bindParam(":idade", $idade, PDO::PARAM_INT); // Salva o valor calculado pelo PHP
         $stmt->bindParam(":convenio", $convenio);
         $stmt->bindParam(":sexo", $sexo);
-
         $stmt->bindParam(":id_usuario", $id_usuario, PDO::PARAM_INT);
 
         $stmt->execute();
 
         $idPaciente = $conexao->lastInsertId(); 
-        
 
-        // mesma coisa que o de cima, só que com a tab de tele, sempre puxando pelo id para não ter mistura estre usuarios:
         $sqlTelefone = "INSERT INTO telefone (id_paciente, telefone) VALUES (:id_paciente, :telefone)";
-
         $stmtTelefone = $conexao->prepare($sqlTelefone);
         $stmtTelefone->bindParam(":id_paciente", $idPaciente);
         $stmtTelefone->bindParam(":telefone", $telefone);
@@ -246,14 +250,14 @@ function entrada($conexao, $valor_entrada, $dia, $nomePaciente, $metodo) // pass
     // Pega o ID do usuário conectado na sessão atual
     $id_usuario = $_SESSION['id'];
 
-    $sql = "INSERT INTO entrada (valor_entrada, dia, id_usuario, nomepaciente, metodo) VALUES (:entrada, :dia, :id_usuario, :nomepaciente, :metodo)";  
+    $sql = "INSERT INTO entrada (valor_entrada, dia, id_usuario, nomepaciente, metodo) VALUES (:entrada, :dia, :id_usuario, :nomePaciente, :metodo)";  
 
     try { // ta atribuindo os valores para as colunas
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(":entrada", $valor_entrada);
         $stmt->bindParam(":dia", $dia);
         $stmt->bindParam(":id_usuario", $id_usuario);
-        $stmt->bindParam(":nomepaciente", $nomePaciente);
+        $stmt->bindParam(":nomePaciente", $nomePaciente);
         $stmt->bindParam(":metodo", $metodo, PDO::PARAM_INT);
 
         $stmt->execute();// execultando
@@ -503,6 +507,14 @@ function obterResumoFinanceiro($conexao)
     } catch (PDOException $e) {
         return ['entradas' => 0, 'saidas' => 0];
     } // terminada
+}
+
+
+                                           //   DESCOBRE A IDADE
+function idade($conexao, $idade){
+    require_once __DIR__ . '/../database/connect.php';
+    $id_usuario = $_SESSION['id'];
+
 }
 
 ?>

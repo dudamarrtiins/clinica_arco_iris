@@ -1,14 +1,15 @@
-<?php 
+<?php
 session_start();
 if (!isset($_SESSION['id'])) {
     header("Location: ../index.php");
     exit();
 }
-require_once __DIR__ . '/../includes/functions.php'; 
+require_once __DIR__ . '/../includes/functions.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,8 @@ require_once __DIR__ . '/../includes/functions.php';
         }
 
         body {
-            background-color: #fff3ed; /* Fundo bege da imagem */
+            background-color: #fff3ed;
+            /* Fundo bege da imagem */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -49,7 +51,8 @@ require_once __DIR__ . '/../includes/functions.php';
         }
 
         /* TÍTULOS E LABELS */
-        h2, label {
+        h2,
+        label {
             font-size: 18px;
             color: #000000;
             font-weight: bold;
@@ -71,7 +74,8 @@ require_once __DIR__ . '/../includes/functions.php';
         input[type="date"] {
             width: 100%;
             height: 48px;
-            background-color: #85b4f2; /* Azul exato do protótipo */
+            background-color: #85b4f2;
+            /* Azul exato do protótipo */
             border: none;
             border-radius: 18px;
             padding: 0 20px;
@@ -126,21 +130,23 @@ require_once __DIR__ . '/../includes/functions.php';
         }
     </style>
 </head>
+
 <body>
-    <?php 
+    <?php
     include __DIR__ . '/../includes/header.php';
     ?>
 
     <main> <!--main, pois o mais importante da pag esta aqui:-->
         <form action="" method="post">
-            
+
             <h2>Adicione o valor da entrada:</h2>
             <div class="campo-grupo">
+
                 <input type="text" name="entrada" id="entrada" placeholder="00.00" required> <!--pega o valor-->
 
-                <input type="text" name="nomepaciente" id="nomepaciente" placeholder="Insira o Nome e sobrenome do paciente" required>  <!--pega o nome-->
+                <input type="text" name="nomePaciente" id="nomePaciente" placeholder="Insira o Nome e sobrenome do paciente" required> <!--pega o nome-->
 
-                <input type="text" name="metodo" id="metodo" placeholder="Insira o metodo de pagamento" required> 
+                <input type="text" name="metodo" id="metodo" placeholder="Insira o metodo de pagamento" required>
                 <!--pega o metodo do pag-->
             </div>
 
@@ -159,12 +165,20 @@ require_once __DIR__ . '/../includes/functions.php';
 
         <?php
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            entrada($conexao, $_POST['entrada'], $_POST['dia'], $_POST['nomePaciente'], $_POST['metodo']);
+            // Tratamento com ?? '' para evitar o aviso de Undefined array key
+            $entrada      = $_POST['entrada']      ?? '';
+            $dia          = $_POST['dia']          ?? '';
+            $nomePaciente = $_POST['nomePaciente'] ?? '';
+            $metodo       = $_POST['metodo']       ?? '';
+
+            // Chama a função passando as variáveis já protegidas
+            entrada($conexao, $entrada, $dia, $nomePaciente, $metodo);
         } // passando os parametros da função entrada
         ?>
 
     </main>
-    
+
     <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
+
 </html>
