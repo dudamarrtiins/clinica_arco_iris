@@ -61,7 +61,7 @@
 
 <header>
     <nav>
-        <div> <!--btns para navegar-->
+        <div> <!--btns para navegar, aqui esta os endereços das pags-->
         <a href="/clinica_arco_iris/painel.php">Dashboard</a>
 
         <a href="/clinica_arco_iris/app/agenda.php">Agenda  </a>

@@ -1,5 +1,5 @@
 <style>
-    /* CSS DO RODAPÉ (FOOTER) */
+    /* CSS DO RODAPÉ  */
     .footer-base {
         width: 100%;
         background-color: #85b4f2; /* Azul padrão do sistema */
