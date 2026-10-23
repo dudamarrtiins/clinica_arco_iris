@@ -82,6 +82,7 @@ A arquitetura do software foi guiada estritamente pela documentação de requisi
 - **RN-001 (Validação da Consulta):** Toda consulta deve ser cobrada no valor de R$ 200,00.
 - **RN-004 (Restrição de Idade Mínima):** O atendimento é exclusivo para pacientes com idade igual ou superior a 03 anos.
 
+- Você pode acessar a **Documentação completa:** 👉 [Acesse aqui para vissualizar](https://github.com/dudamarrtiins/clinica_arco_iris/tree/main/documentacao)
 
 ## 4 Estrutura do projeto
 
