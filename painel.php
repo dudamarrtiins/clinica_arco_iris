@@ -292,7 +292,7 @@ $pctSaidas   = min(100, round(($totalSaidas / $maxValor) * 100));
                     </div>
                     <div class="barra-fundo">
                         <div class="barra-preenchimento cor-entrada" style="width: <?php echo $pctEntradas; ?>%;"></div>
-                        <!---- largura em % da barra verde
+                        <!---- largura em % da barra verde-->
                     </div>
                 </div>
 
