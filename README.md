@@ -233,7 +233,7 @@ erDiagram
 ```
 
 # 5.2 Dicionário de Dados
-- Você pode acessar o **Dicionário de dados:** 👉 [Acessar Projeto no Canva](https://canva.link/pztms13j0ivh8h6)
+- Você pode acessar o **Dicionário de dados:** 👉 [Acesse aqui para baixar o arquivo](https://github.com/dudamarrtiins/clinica_arco_iris/blob/main/database/banco_de_dados/dicionario_dados_arcoires.xlsx)
 
 
 # 6 Product Backlog
