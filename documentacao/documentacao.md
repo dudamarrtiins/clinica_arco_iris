@@ -1,15 +1,15 @@
 # ProjetoClinicaArcoIris
 ### Projeto final de Semestre
-# Clinica Arco - Iris
+# Clínica Arco - Íris
 # Especificação de Requisitos
 
 ## 1. Introdução
 
 ### 1.1 Propósito
-Este documento especifica os requisitos funcionais, não-funcionais e regras de negócio para o Sistema da Clinica Arco - Iris, seguindo as diretrizes de especificação do padrão ISO/IEC/IEEE 29148:2018.
+Este documento especifica os requisitos funcionais, não-funcionais e regras de negócio para o Sistema da Clínica Arco - Íris, seguindo as diretrizes de especificação do padrão ISO/IEC/IEEE 29148:2018.
 
 ### 1.2 Escopo
-O sistema consistirá em uma aplicação escrita em PHP, HTML para gerenciar de forma volátil operações de gerenciamento de pacientes de uma clinica psicologica, como, vissualização de agenda, ganhos e pacientes.
+O sistema consistirá em uma aplicação escrita em PHP, HTML para gerenciar de forma volátil operações de gerenciamento de pacientes de uma clínica psicológica, como, visualização de agenda, ganhos e pacientes.
 
 ### 1.3 Definições e Acrônimos
 - **RF**: Requisito Funcional (O que o sistema faz).
@@ -28,10 +28,21 @@ O sistema consistirá em uma aplicação escrita em PHP, HTML para gerenciar de 
 O sistema operará de forma autônoma, sendo executado localmente. Os dados persistirão apenas durante a sessão ativa da aplicação.
 
 ### 2.2 Funções Principais
-- Adicionar novos pacientes. - C
-- Remoção e alteração de pacientes. - D & U
-- Vissualizaçõa das informações dos pacientes. 
-- Vissualização da agenda.
+- Crie uma conta
+- Faça login
+- Cadastre novos pacientes
+- Atualize os dados de seus pacientes
+- Apague os dados de seus pacientes
+- Visualize todos os nomes de seus pacientes de um só vez
+- Visualize todos os dados de apenas um paciente em específico
+- Marque sessões de terapia
+- Remarque essas sessões
+- Cancele as sessões
+- Atualize os status das sessões (cancelada, realizada)
+- Visualize as sessões em seu calendário
+- Faça logout 
+
+
 
 ---
 
@@ -39,16 +50,25 @@ O sistema operará de forma autônoma, sendo executado localmente. Os dados pers
 
 ### 3.0 user story
 
-Responsável que utiliza o sistema - "Eu quero que o sisitema me mostre todas informações de meus paciente, sendo elas o pagamento pela consulta, o dia de atendimento, o telefone, data de nascimento, cpf, endereço, convenio e nome completo."
+Responsável que utiliza o sistema - "Eu quero que o sistema me mostre todas informações de meus pacientes, sendo elas o pagamento pela consulta, o dia de atendimento, o telefone, data de nascimento, CPF, convênio e nome completo."
 
-### 3.1 Requisitos Funcionais (RF)
+## 3.1 Definições e acrônimos
+| **TERMO** | **DEFINIÇÕES** |
+| --- | --- |
+| CRUD | Sigla representativa para Create, Read, Update and Delete |
+| DER | Diagrama Entidade-Relacionamento |
+| RF | Requisito Funcional |
+| RNF | Requisito Não Funcional |
+| RN | Regra de Negócio |
+
+### 3.2 Requisitos Funcionais (RF)
 
 #### RF-001: Abertura de Conta
 **Descrição**: O sistema deve permitir a abertura de um novo paciente solicitando obrigatoriamente o nome completo do mesmo.
 
 **Prioridade**: Alta  
 **Versão**: 1.0  
-**Data**: 2026-09-25  
+**Data**: 2026-10-07 
 
 **Critérios de Aceitação**:
 - [ ] O sistema não deve aceitar nomes de titulares vazios.
@@ -56,13 +76,12 @@ Responsável que utiliza o sistema - "Eu quero que o sisitema me mostre todas in
 
 ---
 
-#### RF-002: Realização de Depósitos
-**Descrição**: O sistema deve permitir que o usuário root modifique qualquer informação dos pacientes, sendo eles recem adicionados ou não.
+#### RF-002: Modificação de Perfil
+**Descrição**: O sistema deve permitir que o usuário root modifique qualquer informação dos pacientes, sendo eles recém-adicionados ou não.
 
 **Prioridade**: Alta  
 **Versão**: 1.0  
-**Data**: 2026-09-25  
-**Rastreabilidade**: Derivado de NS-001
+**Data**: 2026-10-07 
 
 **Critérios de Aceitação**:
 - [ ] As novas informações adicionadas não devem ficar vazias.
@@ -72,111 +91,150 @@ Responsável que utiliza o sistema - "Eu quero que o sisitema me mostre todas in
 
 ---
 
-#### RF-003: Realização de Saques
+#### RF-003: Apagando Perfis
 **Descrição**: O sistema deve permitir que o usuário root apague perfis de antigos clientes.
 
 **Prioridade**: Alta  
 **Versão**: 1.0  
-**Data**: 2026-09-25  
+**Data**: 2026-10-07 
+
 **Rastreabilidade**: Derivado de NS-001
 
 **Critérios de Aceitação**:
 - [ ] O sistema deve apagar todas as informações do perfil de um determinado cliente quando solicitado.
+
+**Dependências**: RN-001
+
+---
+#### RF-004: Agendando Consultas
+**Descrição**: O sistema deve permitir a adição de uma nova consulta.
+
+**Prioridade**: Alta  
+**Versão**: 1.0  
+**Data**: 2026-10-07 
+
+
+**Critérios de Aceitação**:
+- [ ] O sistema não deve aceitar campos vazios, sendo eles: nome do paciente, dia e horário.
+- [ ] O sistema deve mostrar no calendário a consulta com horário e nome do paciente.
+
 **Dependências**: RN-001
 
 ---
 
-#### RF-004: Consulta de Extrato Dinâmico
+#### RF-005: Mudando Status de Consultas
+**Descrição**: O sistema deve permitir que o usuário mude o status da consulta.
+
+**Prioridade**: Alta  
+**Versão**: 1.0  
+**Data**: 2026-10-07 
+
+**Critérios de Aceitação**:
+- [ ] O sistema deve permitir trocar o status de agendada para realizada.
+
+**Dependências**: RN-004 
+
+---
+
+#### RF-006: Cancelando Consultas
+**Descrição**: O sistema deve permitir que o usuário mude o status da consulta para cancelada.
+
+**Prioridade**: Alta  
+**Versão**: 1.0  
+**Data**: 2026-10-07 
+
+**Critérios de Aceitação**:
+- [ ] O sistema deve permitir trocar o status de agendada para cancelada, assim apagando do calendário.
+
+**Dependências**: RN-004 e RN-005
+
+---
+
+#### RF-007: Consulta de Extrato 
 **Descrição**: O sistema deve exibir em tela as últimas movimentações financeiras realizadas.
 
 **Prioridade**: Média  
 **Versão**: 1.0  
-**Data**: 2026-09-25  
+**Data**: 2026-10-07 
 **Rastreabilidade**: Derivado de NS-001
 
 **Critérios de Aceitação**:
-- [ ] Exibir de forma legível o saldo atual .
+- [ ] Exibir de forma legível o saldo atual.
 - [ ] Apresentar a listagem histórica cronológica.
 
-**Dependências**: RF-001
 
 ---
 
-#### RF-005: Menu Interativo CLI
-**Descrição**: O sistema deve disponibilizar um menu de navegação para o administrador possa navegar pelas páginas.
+#### RF-008: Menu Interativo 
+**Descrição**: O sistema deve disponibilizar um menu de navegação para que o administrador possa navegar pelas páginas.
 
 **Prioridade**: Média  
 **Versão**: 1.0  
-**Data**: 2026-09-25  
+**Data**: 2026-10-07
 
 **Critérios de Aceitação**:
-- [ ] Apresentar opções claras (1. Depósito, 2. Saque, 3. Extrato, 4. Sair).
+- [ ] Apresentar opções claras no header.
 
 
 ---
 
-### 3.2 Regras de Negócio (RN)
+### 3.3 Regras de Negócio (RN)
 
 #### RN-001: Validação da consulta
-**Descrição**: Toda e qualquer deve ser cobrado um valor de 200,00 reais.
+**Descrição**: Toda consulta deve ser cobrada no valor de 200,00 reais.
 
 **Prioridade**: Crítica  
 **Versão**: 1.0  
-**Data**: 2026-09-25  
+**Data**: 2026-10-14
 
 ---
-
-#### RN-002: Cobrança de Taxa de Serviço
-**Descrição**: As consulta seguintes da primeira sessão, só serão liberadas se a consulta anterior a esta já estiver paga
-
-
-**Prioridade**: Crítica  
-**Versão**: 1.0  
-**Data**: 2026-09-25  
-
----
-
 
 #### RN-004: Restrição de Idade Mínima
-**Descrição**: O sistema de atendimentos é exclusivo para pacientes com idade igual ou superior a 03 anos. Caso a idade informada no cadastro inicial realizada pelo administrador seja menor que 03 anos, o sistema deve exibir uma mensagem impeditiva e encerrar o fluxo imediatamente.
+**Descrição**: O sistema de atendimentos é exclusivo para pacientes com idade igual ou superior a 03 anos. Caso a idade informada no cadastro inicial realizado pelo administrador seja menor que 03 anos, o sistema deve exibir uma mensagem impeditiva e encerrar o fluxo imediatamente.
 
 **Prioridade**: Crítica
 **Versão**: 1.0
-**Data**: 2026-09-25
+**Data**: 2026-10-14
 
 ---
 
-### 3.3 Requisitos Não-Funcionais (RNF)
+### 3.4 Requisitos Não-Funcionais (RNF)
 
 #### RNF-001: Linguagem e Dependências
-**Descrição**: O sistema deve ser desenvolvido exclusivamente utilizando a linguagem Python 3.14, fazendo uso apenas de suas bibliotecas padrão nativas (`os`), sem a dependência de frameworks ou pacotes externos.
+**Descrição**: O sistema deve possuir um gráfico para acompanhar a gestão financeira.
 
-**Categoria**: Portabilidade / Arquitetura  
-**Prioridade**: Alta  
+**Prioridade**: Baixa
 **Versão**: 1.0  
+**Data**: 2026-10-14
 
 ---
+
+#### RNF-001: Linguagem e Dependências
+**Descrição**: O sistema deve possuir um calendário para exibir as consultas agendadas.
+
+**Prioridade**: Alta
+**Versão**: 1.0  
+**Data**: 2026-10-14
 
 ## 4. Controle de Versões
 
 ### Histórico de Alterações
 
-| Versão | Data       | Autor                 | Modificações                                      |
-|--------|------------|-----------------------|---------------------------------------------------|
-| 1.0    | 2026-09-25 | Maria Eduarda         | Criação da especificação sob a ISO 29148.         |
-|--------|------------|-----------------------|---------------------------------------------------|
-| 2.0    | ---------- | Maria Eduarda         |           ----------------------------------------|
-|--------|------------|-----------------------|---------------------------------------------------|
-| 3.0    | ---------- | Maria Eduarda         |               ---------------------------------   |
+## 11. Controle de Versões
 
+| Versão | Data | Descrição das Alterações | Autor(es) |
+| :---: | :---: | --- | :---: |
+| **1.0** | 10/10/2026 | Criação do repositório, elaboração inicial da documentação, criação do Diagrama Entidade-Relacionamento (DER) e modelagem de dados. | Maria E |
+| **1.1** | 11/10/2026 | Continuação da modelagem de dados e evolução da documentação técnica. | Maria E |
+| **1.2** | 12/10/2026 | Implementação do controle de sessões e funções de relacionamento para isolamento de contas de usuário. Criação das páginas do CRUD (prontuário, cadastro e visualização individual de pacientes). | Maria E |
+| **1.3** | 12/10/2026 | Ajuste e correção dos relacionamentos no banco de dados SQL (chaves primárias e estrangeiras). | Maria E |
+| **1.4** | 14/10/2026 | Inclusão do dump do banco de dados e aplicação da função `LOWER` no SQL. Atualização do DER, criação do Dicionário de Dados e inclusão de campos na tabela de entradas e saídas (nome do paciente e motivo). Atualização do README. | Maria E |
+| **1.5** | 15/10/2026 | Padronização e reestruturação dos caminhos relativos e absolutos de navegação no painel principal. | Maria E |
+| **1.6** | 16/10/2026 | Correção dos links do README e ajustes finais nas rotas centrais da aplicação. | Maria E |
+| **1.7** | 20/10/2026 | Atualização e revisão periódica do README. | Maria E |
+| **1.8** | 21/10/2026 | Implementação de validações de idade mínima e limite de entradas. Correção na persistência do nome do paciente no extrato, ajuste na função de atualizar idade, correção do link do `git clone` e adição de comentários no código. | Maria E |
+| **1.9** | 22/10/2026 | Finalização da documentação do código (comentários) e últimas revisões/modificações no README e na documentação técnica. | Maria E |
 
+---
 
-
-### Matriz de Rastreabilidade Simplificada
-
-* **NS-001 (Cadastro)** RF-001 (Abertura de Conta)  Teste de validação de dados iniciais.
-* **NS-002 (Depósito)**  RF-002 (Realização de Depósitos) Teste de incrementação de saldo.
-* **NS-003 (Saque)**  RF-003 (Realização de Saques) RN-001 (Validação de Limite) e RN-002 (Aplicação de Taxa).
-* **NS-004 (Histórico)**  RF-004 (Consulta de Extrato) RN-003 (Regra das 3 posições).
-* **NS-005 (Interatividade)**  RF-005 (Menu CLI)$ RNF-003 (Tratamento de Exceções).
-* **NS-006 (valor)** NR-005 (Restrição de saque) 
+Fim da documentação. Obrigada pela atenção!

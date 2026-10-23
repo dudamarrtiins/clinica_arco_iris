@@ -168,8 +168,6 @@ require_once __DIR__ . '/../includes/functions.php';
             <label for="nasc">Nascimento: </label> <!--pegando o nasc-->
             <input type="date" name="nasc" id="nasc">
 
-            <label for="idade">Idade: </label> <!--pegando a idade-->
-            <input type="number" name="idade" id="idade" placeholder="00" >
 
             <label for="convenio">Convenio: </label> <!--pegando o convenio-->
             <input type="text" name="convenio" id="convenio" placeholder="Insira o nome do convenio" >
@@ -194,7 +192,7 @@ require_once __DIR__ . '/../includes/functions.php';
 
         <?php
         if ($_SERVER['REQUEST_METHOD'] == "POST") { // verifica se a pag foi carregada
-            atualizar($conexao, $_POST['nome'], $_POST['cpf'], $_POST['nasc'], $_POST['idade'], $_POST['convenio'], $_POST['sexo'], $_POST['telefone']);
+            atualizar($conexao, $_POST['nome'], $_POST['cpf'], $_POST['nasc'], $_POST['convenio'], $_POST['sexo'], $_POST['telefone']);
         } // passando todos os parametros da função atualizar e chama ela
         ?>
     </main>

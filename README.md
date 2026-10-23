@@ -1,87 +1,86 @@
 # Clínica Arco-Íris 🌈 - Sistema de Gestão Psicológica
 
- A Clínica Arco-Íris é uma aplicação web desenvolvida para gerenciar de forma prática, organizada e segura as operações essenciais de uma clínica de psicologia. O projeto foi estruturado com foco em controle de pacientes, agendamento de consultas e acompanhamento de fluxo financeiro de maneira simples e pratica.
+A Clínica Arco-Íris é uma aplicação web desenvolvida para gerenciar de forma prática, organizada e segura as operações essenciais de uma clínica de psicologia. O projeto foi estruturado com foco em controle de pacientes, agendamento de consultas e acompanhamento de fluxo financeiro de maneira simples e prática.
 
- ```bash
-    "Este projeto foi desenvolvido para fins academicos."
- ```
+Sistema: Clínica Arco-Íris
+Versão: 1.10
+Data: Outubro de 2026
 
 ---
 # 1 Introdução
 ## 1.1 Propósito
+Este documento especifica os requisitos funcionais, não-funcionais e regras de negócio para o Sistema da Clínica Arco - Íris, seguindo as diretrizes de especificação do padrão ISO/IEC/IEEE 29148:2018.
 
 ## 1.2 Escopo
+O sistema permite que o administrador crie uma conta e faça login. Após isso, o administrador pode cadastrar seus pacientes, atualizar suas informações, apagar o paciente, marcar e gerenciar consultas, visualizar os pacientes cadastrados e acompanhar a movimentação financeira com as entradas e saídas de dinheiro.
 
-## 1.3 Contexto
-
-A aplicação permite que piscicologos - ou secretarios - administrem todas as informações de seus pacientes em um só lugar. Os dias de terapia, dados de pagamento, dados sensiveis dos pacientes ficam armazenados no mesmo sistema, facilitando na hora de acesso. O administrador, pode criar uma conta, fazer login, cadastrar um paciente - administrar os dados desse paciente, ou seja, atualizar ou apagar - Administrar sessôes de terapia - ou seja, marcar, remarcar e cancelar - E gerenciar as finançãs da clínica.
-
-## 1.4
 
 # 2 Descrição
 
 ## 2.1 Funções Principais
 O sistema permite que o administrador:
 
-- crie uma conta
+- Crie uma conta
 - Faça login
 - Cadastre novos pacientes
 - Atualize os dados de seus pacientes
-- Apague os dados de sues pacientes
-- Vissualize todos os nomes de seus pacientes de um só vez
-- Vissualize todos os dados de apenas um paciente em esspecífico
+- Apague os dados de seus pacientes
+- Visualize todos os nomes de seus pacientes de uma só vez
+- Visualize todos os dados de apenas um paciente em específico
 - Marque sessões de terapia
 - Remarque essas sessões
 - Cancele as sessões
 - Atualize os status das sessões (cancelada, realizada)
-- Vissualize as sessões em sue calendario
+- Visualize as sessões em seu calendário
 - Faça logout 
 
 ## 2.3 Classes de usuários
-```
-|**TIPO DE USER**|**DESCRIÇÃO**|**PERMISSÕES**                        |
-|Administrador   | Pessoa que possui conta criada logada em uma sessão| Pode gerenciar as informações de pacientes, sessões de terapias e o movimento financeiro|
-```
+
+| **TIPO DE USER** | **DESCRIÇÃO** | **PERMISSÕES** |
+| --- | --- | --- |
+| Administrador | Pessoa que possui conta criada logada em uma sessão | Pode gerenciar as informações de pacientes, sessões de terapias e o movimento financeiro |
+
 
 ## Tecnologias Utilizadas
 
- ### O projeto foi construído focando em uma arquitetura limpa e padrão procedural seguro:
-  - **Linguagem Backend:** PHP (PDO para acesso ao banco de dados com prepared statements)
-  -  **Banco de Dados:** PostgreSQL (Gerenciado via pgAdmin 4 ou Moba) 
-  - **Frontend:** HTML5, CSS3
-  - **Ferramentas de Desenvolvimento:** VS Code, Git e GitHub.
+### O projeto foi construído focando em uma arquitetura limpa e padrão procedural seguro:
+ - **Linguagem Backend:** PHP (PDO para acesso ao banco de dados com prepared statements)
+ - **Banco de Dados:** PostgreSQL (Gerenciado via pgAdmin 4 ou Moba) 
+ - **Frontend:** HTML5, CSS3
+ - **Ferramentas de Desenvolvimento:** VS Code, Git e GitHub.
 
 
 
 # 3 Requisitos e Regras de Negócio
- ## Engenharia de Requisitos (Padrão ISO 29148) 
+## Engenharia de Requisitos (Padrão ISO 29148) 
 A arquitetura do software foi guiada estritamente pela documentação de requisitos para garantir consistência lógica e regras bem definidas:
 
 ## 3.1 Definições e acrônimos
-|**TERMO**|**DEFINIÇÕES**|
-|CRUD|Sigla representativa para Create, Read, Update and Delete|
-|DER| Diagrama Entidade-Relacionamento|
-|RF|Requisito Funcional|
-|RNF|Requisito Não Funcional|
-|RN|Regra de Negócio|
+| **TERMO** | **DEFINIÇÕES** |
+| --- | --- |
+| CRUD | Sigla representativa para Create, Read, Update and Delete |
+| DER | Diagrama Entidade-Relacionamento |
+| RF | Requisito Funcional |
+| RNF | Requisito Não Funcional |
+| RN | Regra de Negócio |
 
-## 3.2 Requisistos Funcionais (RF)
-- (RF-001): Registro obrigatório com validações para nome completo, CPF, telefone, data de nascimento, endereço e convênio.
+## 3.2 Requisitos Funcionais (RF)
+- **RF-001 (Abertura de Conta):** Permite a abertura de um novo paciente solicitando obrigatoriamente o nome completo do mesmo.
+- **RF-002 (Modificação de Perfil):** Permite ao usuário root modificar qualquer informação dos pacientes.
+- **RF-003 (Apagando Perfis):** Permite ao usuário root apagar perfis de antigos clientes.
+- **RF-004 (Agendando Consultas):** Permite a adição de uma nova consulta com nome do paciente, dia e horário.
+- **RF-005 (Mudando Status de Consultas):** Permite alterar o status da consulta de agendada para realizada.
+- **RF-006 (Cancelando Consultas):** Permite mudar o status da consulta para cancelada, removendo-a do calendário.
+- **RF-007 (Consulta de Extrato):** Exibe em tela as últimas movimentações financeiras e o saldo atual.
+- **RF-008 (Menu Interativo):** Disponibiliza menu de navegação no header para transição entre as páginas.
 
-- Edição e Gestão de Perfil (RF-002): Permissão para atualizar e alterar dados de pacientes cadastrados a qualquer momento.
+## 3.3 Requisitos Não-Funcionais (RNF)
+- **RNF-001 (Acompanhamento Financeiro):** O sistema deve possuir um gráfico para acompanhar a gestão financeira.
+- **RNF-002 (Visualização em Calendário):** O sistema deve possuir um calendário para exibir as consultas agendadas.
 
-- Remoção de Clientes (RF-003): Exclusão definitiva de perfis de pacientes.
-
-- Extrato Financeiro Dinâmico (RF-004): Apresentação detalhada das movimentações de entradas e saídas.
-
-- Navegação e Interface Interativa (RF-005): Painel acessível para transição rápida entre a agenda de atendimentos, cadastro e fluxo financeiro.
-
-  ## 3.3 Requisistos não funcionais (RNF)
-
-  ## 3.4 Regras de Negócio (RN)
-  - RN-001 (Valor da Consulta): Definição do valor padrão de R$ 200,00 para cada consulta agendada.
-  
--  RN-002 (Liberação de Atendimento): Sessões subsequentes à primeira só são liberadas caso a consulta anterior já tenha a confirmação de pagamento.
+## 3.4 Regras de Negócio (RN)
+- **RN-001 (Validação da Consulta):** Toda consulta deve ser cobrada no valor de R$ 200,00.
+- **RN-004 (Restrição de Idade Mínima):** O atendimento é exclusivo para pacientes com idade igual ou superior a 03 anos.
 
 
 ## 4 Estrutura do projeto
@@ -234,14 +233,34 @@ erDiagram
 ```
 
 # 5.2 Dicionário de Dados
+- Você pode acessar o **Dicionário de dados:** 👉 [Acessar Projeto no Canva](https://canva.link/pztms13j0ivh8h6)
+
 
 # 6 Product Backlog
 
+| **Identificação** | **Item** | **Descrição** | **Prioridade** |
+|---|---|---|---|
+| 01 | Cadastro de Usuário | O sistema deve permitir que os usuários criem uma conta a partir de um e-mail e uma senha | Alta |
+| 02 | Login | O sistema deve permitir que o usuário logue na aplicação com a conta criada no cadastro | Alta |
+| 03 | Cadastro de Pacientes | O sistema deve permitir que o administrador cadastre pacientes, não permitindo campos vazios | Alta |
+| 04 | Atualização de Pacientes | O sistema deve permitir que as informações do paciente sejam editáveis | Alta |
+| 05 | Apagar Pacientes | O sistema deve permitir apagar pacientes do banco de dados | Alta |
+| 06 | Visualizar Pacientes | O sistema deve permitir a visualização dos dados dos pacientes | Alta |
+| 07 | Agendar consultas | O sistema deve permitir o agendamento de sessões de terapia | Alta |
+| 09 | Atualização de status | O sistema deve permitir a atualização de status de "agendada" para "realizada" | Média |
+| 10 | Cancelamento de consultas | O sistema deve permitir que as sessões/consultas sejam canceladas | Alta |
+| 11 | Remarcar consultas | O sistema deve permitir que a consulta seja remarcada com um novo dia e horário | Alta |
+| 12 | Entrada de Pagamento | O sistema deve permitir que as entradas de dinheiro sejam registradas no banco de dados | Alta |
+| 13 | Vinculação de pagamento com paciente | O sistema deve permitir que a entrada de dinheiro seja vinculada com o nome do paciente que pagou | Alta |
+| 14 | Saída de dinheiro | O sistema deve permitir que as saídas de dinheiro sejam registradas e salvas no banco de dados | Alta |
+| 15 | Extrato | O sistema deve permitir que as movimentações financeiras registradas sejam visualizadas em um extrato organizado em ordem cronológica | Média |
+| 16 | Visualização do financeiro | O sistema deve mostrar a movimentação financeira por meio de um gráfico | Média |
+| 17 | Visualização de consultas | O sistema deve permitir que as sessões agendadas apareçam em um calendário com seus respectivos dias, horários e nomes de pacientes | Alta |
+| 19 | Visualização por cor no gráfico | O sistema deve permitir que o gráfico apresente coloração verde para entradas e vermelha para saídas | Baixa |
+| 20 | Visualização por cor no calendário | O sistema deve permitir que as sessões apresentem coloração diferente para cada status | Baixa |
+
 # 7 Design
 - Você pode acessar a **prototipagem:** 👉 [Acessar Projeto no Canva](https://canva.link/pztms13j0ivh8h6)
-
-
-- Você pode acessar a apresentação visual: 👉 [Ver Projeto no Canva]()
 
 
 # 8 COMO EXECUTAR A APLICAÇÃO: 
@@ -259,22 +278,34 @@ Clone este repositório:
 
  abra o terminal, git bash ou o prompt de comando e execulte:
 
+- acesse a pasta desejada para guardar o projeto:
+```bash
+cd pasta
+```
+- após acessar execulte:
 ```bash
 git clone https://github.com/dudamarrtiins/clinica_arco_iris.git
 ```
 
-- acesse a pasta desejada:
+- acesse a pasta:
 ```bash
 cd clinica_arco_iris
 ```
 
 
 ### 2. Criar o usuário e o banco de dados
+Dentro desse repositorio, esta um arquivo do **dump do banco de dados**, com este arquivo você recriara toda a estrutura do banco de dados necessario. **Siga as instruções:**
+
 Conecte-se ao Postgres:
 
-- abra o terminal, git bash ou o prompt de comando e execulte:
+- abra o terminal, ou o prompt de comando e execulte (**em windows**):
 - ```bash
   psql -U postgres
+  ```
+
+  - abra o terminal e execulte (**em Linux**):
+- ```bash
+  sudo  -u postgres psql
   ```
 
 Acesse o Postgres e crie um novo banco de dados e um novo usuario
@@ -295,14 +326,20 @@ CREATE DATABASE arcoires OWNER root;
 ```
 
 - saia do login do postgres, com o comando:
-  ```sql
-  \q
-  ```
-### 3. Restaurar o database
-  - Certifiquesse que esta na raiz do projeto (pasta principal) e execulte o comando a baixo para restaurar o banco.o arquivo com a estrutura do banco fica em `database/arcoires.sql`. Execute-o no banco `arcoires` usando o terminal::
+```sql
+\q
+```
 
+### 3. Restaurar o database
+  - Certifiquesse que esta na raiz do projeto (pasta principal) e execulte o comando a baixo para restaurar o banco. O arquivo com a estrutura do banco fica em `database/banco_de_dados/arcoiris.sql`. Execute-o no banco `arcoires` usando o terminal::
+
+- se o terminal estiver aberto dentro da pasta database/banco_de_dados execulte:
   ```sql
-  psql -U root -d arcoires -f arcoires.sql
+  psql -U root -d arcoires -f arcoiris.sql
+  ```
+- Se não, execulte com o caminho:
+  ```sql
+  psql -U root -d arcoires -f "database/banco_de_dados/arcoiris.sql"
   ```
 Quando solicitado, informe a senha do usuário `root`. Esse comando cria as tabelas necessárias para a aplicação
 
@@ -314,12 +351,13 @@ No arquivo `database/config.php`, configure os dados do banco local. O arquivo d
 ```php
 <?php
 define('DB_HOST', 'localhost'); // adicione o IP da sua maquina no localhost
-define('DB_PORT', '5432');  // porta a ser utilizada
-define('DB_NAME', 'arcoires');  // nome do database
-define('DB_USER', 'root');   // nome usuario
-define('DB_PASS', 'arcoires');  // senha
+define('DB_PORT', '5432');  // porta padrão utilizada, NÃO DEXE SER ALTERADA
+define('DB_NAME', 'arcoires');  // nome do banco de dados criado
+define('DB_USER', 'root');   // nome do usuário criado
+define('DB_PASS', 'arcoires');  // senha do banco de dados
 ?>
 ```
+após a alteração devida SALVE o arquivo.
 
 ### 5. Conferir o driver do PostgreSQL no PHP
 
@@ -354,3 +392,32 @@ http://localhost:8000
 
 - **`psql` não é reconhecido:** use o caminho completo do `psql.exe`.
 
+---
+# 9 Controle de Versões
+| Versão | Data | Descrição das Alterações | Autor(es) |
+| :---: | :---: | --- | :---: |
+| **1.0** | 10/10/2026 | Criação do repositório, elaboração inicial da documentação, criação do Diagrama Entidade-Relacionamento (DER) e modelagem de dados. | Maria E |
+| **1.1** | 11/10/2026 | Continuação da modelagem de dados e evolução da documentação técnica. | Maria E |
+| **1.2** | 12/10/2026 | Implementação do controle de sessões e funções de relacionamento para isolamento de contas de usuário. Criação das páginas do CRUD (prontuário, cadastro e visualização individual de pacientes). | Maria E |
+| **1.3** | 12/10/2026 | Ajuste e correção dos relacionamentos no banco de dados SQL (chaves primárias e estrangeiras). | Maria E |
+| **1.4** | 14/10/2026 | Inclusão do dump do banco de dados e aplicação da função `LOWER` no SQL. Atualização do DER, criação do Dicionário de Dados e inclusão de campos na tabela de entradas e saídas (nome do paciente e motivo). Atualização do README. | Maria E |
+| **1.5** | 15/10/2026 | Padronização e reestruturação dos caminhos relativos e absolutos de navegação no painel principal. | Maria E |
+| **1.6** | 16/10/2026 | Correção dos links do README e ajustes finais nas rotas centrais da aplicação. | Maria E |
+| **1.7** | 20/10/2026 | Atualização e revisão periódica do README. | Maria E |
+| **1.8** | 21/10/2026 | Implementação de validações de idade mínima e limite de entradas. Correção na persistência do nome do paciente no extrato, ajuste na função de atualizar idade, correção do link do `git clone` e adição de comentários no código. | Maria E |
+| **1.9** | 22/10/2026 | Finalização da documentação do código (comentários) e últimas revisões/modificações no README e na documentação técnica. | Maria E |
+
+---
+## 10. Conclusão
+
+O desenvolvimento do sistema de gestão para a **Clínica Arco-Íris** alcançou com êxito todos os objetivos propostos para o ciclo do projeto. A aplicação web entregue oferece uma solução eficiente, segura e intuitiva para o gerenciamento de pacientes, agendamento de consultas e acompanhamento do fluxo financeiro, atendendo diretamente às necessidades operacionais de uma clínica de psicologia.
+
+Com a implementação de uma arquitetura limpa em PHP e PostgreSQL, o sistema garante a integridade dos dados e a persistência correta das informações através do uso de prepared statements e chaves relacionais bem estruturadas. Além disso, a aderência às diretrizes da norma ISO/IEC/IEEE 29148:2018 permitiu alinhar com precisão os Requisitos Funcionais, Não-Funcionais e Regras de Negócio — como a restrição de idade mínima e a precificação padrão das consultas.
+
+O projeto consolida-se como um produto completo e funcional, munido de documentação técnica detalhada, rastreabilidade de requisitos e controle de versões transparente. Como perspectivas para evoluções futuras, o sistema deixa bases sólidas para a integração de novos relatórios analíticos, controle de permissões multinível e módulos expandidos de atendimento.
+---
+# Autoria 
+Desenvolvido por Maria Eduarda Martins Pereira
+Projeto desenvolvido para o curso técnico em Desenvolvimento de Sistemas — SENAI.
+
+© 2026 Clínica Arco - Íris. Todos os direitos reservados.

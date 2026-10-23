@@ -160,7 +160,7 @@ function apagar($conexao, $nome)
 
                                       // ATUALIZAR 
 
-function atualizar($conexao, $nome, $cpf, $nasc, $idade, $convenio, $sexo, $telefone) // parametros
+function atualizar($conexao, $nome, $cpf, $nasc, $convenio, $sexo, $telefone) // parametros
 {
     require_once __DIR__ . '/../database/connect.php';  
 
