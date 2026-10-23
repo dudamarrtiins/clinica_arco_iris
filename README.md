@@ -415,10 +415,10 @@ O desenvolvimento do sistema de gestão para a **Clínica Arco-Íris** alcançou
 
 Com a implementação de uma arquitetura limpa em PHP e PostgreSQL, o sistema garante a integridade dos dados e a persistência correta das informações através do uso de prepared statements e chaves relacionais bem estruturadas. Além disso, a aderência às diretrizes da norma ISO/IEC/IEEE 29148:2018 permitiu alinhar com precisão os Requisitos Funcionais, Não-Funcionais e Regras de Negócio — como a restrição de idade mínima e a precificação padrão das consultas.
 
-O projeto consolida-se como um produto completo e funcional, munido de documentação técnica detalhada, rastreabilidade de requisitos e controle de versões transparente. Como perspectivas para evoluções futuras, o sistema deixa bases sólidas para a integração de novos relatórios analíticos, controle de permissões multinível e módulos expandidos de atendimento.
 ---
-# Autoria 
+## Autoria 
 Desenvolvido por Maria Eduarda Martins Pereira
+
 Projeto desenvolvido para o curso técnico em Desenvolvimento de Sistemas — SENAI.
 
 © 2026 Clínica Arco - Íris. Todos os direitos reservados.
