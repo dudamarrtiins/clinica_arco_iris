@@ -195,9 +195,9 @@ require_once __DIR__ . '/../includes/functions.php';
         </form>
 
         <?php
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") { // verifica se a pag foi carregada
             cadastrar($conexao, $_POST['nome'], $_POST['cpf'], $_POST['nasc'], $_POST['idade'], $_POST['convenio'], $_POST['sexo'], $_POST['telefone']);
-        } // passando todos os parametros para a função cadastrar
+        } // passando todos os parametros para a função cadastrar e chama ela
         ?>
     </main>
 

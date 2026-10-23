@@ -153,11 +153,13 @@ require_once __DIR__ . '/../includes/functions.php';
     </form>
     
     <?php 
-    if($_SERVER['REQUEST_METHOD']=="POST"){
+    if($_SERVER['REQUEST_METHOD']=="POST"){ // verifica se foi carregada a pag
         echo '<div class="resultado-consulta-card">';
         consultar($conexao, $_POST['nome']);
         echo '</div>';
-    } // passando os parametros da função consultar
+    } // passando os parametros da função consultar e chamando ela
+
+    // novamente o campo de nome é utilizado no lugar do id, assim o sql sabe onde buscar na tab paciente
     ?>
     </main>
     <?php include __DIR__ . '/../includes/footer.php'; ?>

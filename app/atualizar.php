@@ -193,9 +193,9 @@ require_once __DIR__ . '/../includes/functions.php';
         </form> <!--fim do forms-->
 
         <?php
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") { // verifica se a pag foi carregada
             atualizar($conexao, $_POST['nome'], $_POST['cpf'], $_POST['nasc'], $_POST['idade'], $_POST['convenio'], $_POST['sexo'], $_POST['telefone']);
-        } // passando todos os parametros da função atualizar
+        } // passando todos os parametros da função atualizar e chama ela
         ?>
     </main>
 

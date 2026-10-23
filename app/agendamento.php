@@ -1,8 +1,8 @@
 <?php
-session_start();
+session_start(); // inicia a sessão para as variaveis guardadas do user logado
 if (!isset($_SESSION['id'])) {
     header("Location: ../index.php");
-    exit();
+    exit(); // se não tem id ele manda fazer login
 }
 
 require_once __DIR__ . '/../includes/functions.php';
@@ -15,17 +15,19 @@ $stmtP = $conexao->prepare("SELECT id, nome FROM paciente WHERE id_usuario = :id
 $stmtP->bindParam(':id_usuario', $id_usuario);
 
 $stmtP->execute();
-$pacientes = $stmtP->fetchAll(PDO::FETCH_ASSOC);
+$pacientes = $stmtP->fetchAll(PDO::FETCH_ASSOC); // guarda tudo em um array
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_paciente = $_POST['id_paciente'];
-    $dia = $_POST['dia'];
-    $hora = $_POST['hora'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { /* verifica se a pag recarregou
+pq o user ciclou no bnt de salvar, que envia o POST */
+    $id_paciente = $_POST['id_paciente']; // pega o id do paciente
+    $dia = $_POST['dia']; // pega a data
+    $hora = $_POST['hora']; //pega a hora
 
-    if (agendarConsulta($conexao, $id_paciente, $dia, $hora)) {
+    if (agendarConsulta($conexao, $id_paciente, $dia, $hora)) { /* chama a função
+    se retornar como true ele toda que deu certo */
         header("Location: agenda.php");
         exit();
-    } else {
+    } else { // se der erro:
         $erro = "Erro ao realizar agendamento.";
     }
 }
@@ -187,7 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <?php if (isset($erro)): ?>
             <p class="msg-erro"><?php echo $erro; ?></p>
-        <?php endif; ?>
+        <?php endif; ?> <!--se tiver retornado como false, ele roda essa mensagem de erro-->
 
         <form method="POST" action="">
 
@@ -196,8 +198,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <select name="id_paciente" id="id_paciente" required>
 
                 <option value="">-- Selecione o Paciente --</option>
-                <?php foreach ($pacientes as $p): ?>
+                <?php foreach ($pacientes as $p): ?> <!--passa por cada paciente-->
                     <option value="<?php echo $p['id']; ?>"><?php echo $p['nome']; ?></option>
+                <!--manda o id, e o nome do paciente -->
                 <?php endforeach; ?>
             </select>
 
@@ -209,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="time" name="hora" id="hora" required>
 
             <div class="botoes-container">
-                <input type="submit" value="Salvar Consulta"> <!-- btn de mandar o que digitado-->
+                <input type="submit" value="Salvar Consulta"> <!-- btn de mandar o que foi digitado-->
                 <a href="agenda.php">Voltar</a> <!--bnt de voltar para o painel-->
             </div>
         </form>

@@ -123,19 +123,33 @@ require_once __DIR__ . '/../includes/functions.php';
     <h1>Apagar paciente</h1>
 
     <main>
+
     <form action="" method="post">
+
+<!--action="" - quando deixado em branco, fala que os dados serão enviados para
+a propria pag
+
+method="post" - define o tipo de envio, de uma forma oculta pela requisição
+do HTML, assim não fica vissel na url
+
+name="nome" - cave que identifica o valor, o forms l~e através do $_POST['nome']
+
+required - não deixa ser enviado com campo em branco
+-->
+
         <label for="nome">Nome: </label> <!--digita o nome -->
         <input type="text" name="nome" id="nome" placeholder="Insira o nome completo" required>
         
         <div class="botoes-container">
-            <input type="submit" value="Apagar"> <!--recebe o nome-->
+            <input type="submit" value="Apagar"> 
             <a href="prontuario.php" class="btn-voltar">Voltar</a> <!--bnt para ir para o prontu--> 
         </div> 
     </form> <!--fim do forms-->
 
     <?php 
-    if($_SERVER['REQUEST_METHOD']=="POST"){
-        apagar($conexao, $_POST['nome']);
+    if($_SERVER['REQUEST_METHOD']=="POST"){ // verifica se a pag foi carregada
+        apagar($conexao, $_POST['nome']); // chama a função e passa a conexao e o nome 
+        // o nome funciona como id, é atraves dele que é possivel saber onde deve-se ser apagado na tab paciente
     }
     // passando os parametros da variavel apagar
     ?>

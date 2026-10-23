@@ -7,13 +7,18 @@ if (!isset($_SESSION['id'])) {
 
 require_once __DIR__ . '/../includes/functions.php';
 
-$acao = $_GET['acao'] ?? null;
+$acao = $_GET['acao'] ?? null; 
+/*pega o valor que foi passado, se não tiver pegado da como null */
 $id = $_GET['id'] ?? null;
+// pega o valor passado e se não tiver pego da como null
 
-if ($acao && $id) {
-    if ($acao == 'cancelar') {
-        cancelarConsulta($conexao, $id);
-    } elseif ($acao == 'realizada') {
+if ($acao && $id) { /* se a variavel acao e a variavel id existirem 
+ao mesmo tempo com valores (sem ser null) entao:*/
+    if ($acao == 'cancelar') { 
+        /*se a variavel acao for = a cancelar ele chama a função de cancelar
+        e atribui os parâmetros */
+        cancelarConsulta($conexao, $id); 
+    } elseif ($acao == 'realizada') { // igual ao de cima
         atualizarStatusConsulta($conexao, $id, 'realizada');
     } elseif ($acao == 'deletar') {
         deletarConsulta($conexao, $id);
@@ -21,4 +26,4 @@ if ($acao && $id) {
 }
 
 header("Location: agenda.php");
-exit();
+exit(); // fim

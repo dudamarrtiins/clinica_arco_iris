@@ -113,7 +113,7 @@ if (!isset($_SESSION['id'])) {
 
         <!-- CARD AZUL QUE ENVOLVE OS DADOS DO PACIENTE -->
         <div class="card-prontuario-container"> <!--div para organizar o CSS-->
-            <?php prontuario($conexao, $_SESSION['id']); ?> <!--passando os paramentros-->
+            <?php prontuario($conexao, $_SESSION['id']); ?> <!--passando os paramentros e chamando a função-->
         </div>
 
         <!-- BARRA AZUL SEPARADA NA PARTE INFERIOR -->
@@ -128,4 +128,4 @@ if (!isset($_SESSION['id'])) {
 </html>
 
 
-7,8,9,12,14,15,16,20,21
+7,8,9,12,14,15,16,20,21,22

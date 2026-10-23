@@ -101,7 +101,7 @@ require_once __DIR__ . '/../includes/functions.php';
 
         <!-- Card azul gigante contendo a listagem do extrato -->
         <div class="card-extrato-container">
-            <?php extrato($conexao); ?> <!--passando o parametro-->
+            <?php extrato($conexao); ?> <!--passando o parametro e chamando a função-->
         </div>
 
         <!-- Botão Voltar azul e arredondado em baixo -->

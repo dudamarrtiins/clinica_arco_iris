@@ -142,7 +142,7 @@ require_once __DIR__ . '/../includes/functions.php';
             <h2>Adicione o valor da entrada:</h2>
             <div class="campo-grupo">
 
-                <input type="text" name="entrada" id="entrada" placeholder="00.00" required> <!--pega o valor-->
+                <input type="text" name="entrada" id="entrada" placeholder="200.00" required> <!--pega o valor-->
 
                 <input type="text" name="nomePaciente" id="nomePaciente" placeholder="Insira o Nome e sobrenome do paciente" required> <!--pega o nome-->
 
@@ -164,8 +164,8 @@ require_once __DIR__ . '/../includes/functions.php';
         </form>
 
         <?php
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            // Tratamento com ?? '' para evitar o aviso de Undefined array key
+        if ($_SERVER['REQUEST_METHOD'] == "POST") { // pag carregada....
+            // ?? '' para evitar o aviso de Undefined array key, ou seja, só manda o campo vazio
             $entrada      = $_POST['entrada']      ?? '';
             $dia          = $_POST['dia']          ?? '';
             $nomePaciente = $_POST['nomePaciente'] ?? '';

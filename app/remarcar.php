@@ -8,6 +8,8 @@ if (!isset($_SESSION['id'])) {
 require_once __DIR__ . '/../includes/functions.php';
 
 $id_consulta = $_GET['id'] ?? null;
+/* quando o user clicou no botao de remarcar ele pega o parâmetro do id, se 
+a URL não tiver pegado e marca com null */
 
 if (!$id_consulta) {
     header("Location: agenda.php");
@@ -15,23 +17,28 @@ if (!$id_consulta) {
 }
 
 // Processa a atualização
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') { /*
+o bloco roda se o user clicou em atualizar agendamento, ai ele pega a nova data
+e o novo horario digitado */
     $novo_dia = $_POST['dia'];
     $nova_hora = $_POST['hora'];
 
     if (remarcarConsulta($conexao, $id_consulta, $novo_dia, $nova_hora)) {
-        header("Location: agenda.php");
+        // chama a função e manda os parâmetros para fazer o update
+        header("Location: agenda.php"); // se der certo
         exit();
-    } else {
+    } else { // se der errado:
         $erro = "Erro ao remarcar consulta.";
     }
 }
 
-// Busca os dados atuais da consulta
+// busca os dados atuais da consulta
 $stmt = $conexao->prepare("SELECT * FROM consultas WHERE id = :id");
-$stmt->bindParam(':id', $id_consulta);
-$stmt->execute();
-$consulta = $stmt->fetch(PDO::FETCH_ASSOC);
+// sql = selecione tudo da tabela consultas onde o id = id da consulta
+
+$stmt->bindParam(':id', $id_consulta); // gurda na caixinha
+$stmt->execute(); //execulta
+$consulta = $stmt->fetch(PDO::FETCH_ASSOC); // traz em forma de array
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

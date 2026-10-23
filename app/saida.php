@@ -155,9 +155,9 @@ require_once __DIR__ . '/../includes/functions.php';
         </form>
 
         <?php
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if ($_SERVER['REQUEST_METHOD'] == "POST") { // verifica se a pag foi recarregada e roda
             saida($conexao, $_POST['saida'], $_POST['dia'], $_POST['motivo']);
-        } // passando os parametros da variavel saida
+        } // passando os parametros da variavel saida e chamando ela
         ?>
 
     </main>
