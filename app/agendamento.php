@@ -10,7 +10,7 @@ require_once __DIR__ . '/../includes/functions.php';
 // 1. Pega o ID do usuário logado na sessão
 $id_usuario = $_SESSION['id'];
 
-// Busca lista de pacientes para o seletor (dropdown)
+// Busca lista de pacientes para o select
 $stmtP = $conexao->prepare("SELECT id, nome FROM paciente WHERE id_usuario = :id_usuario ORDER BY nome ASC");
 $stmtP->bindParam(':id_usuario', $id_usuario);
 
@@ -24,7 +24,7 @@ pq o user ciclou no bnt de salvar, que envia o POST */
     $hora = $_POST['hora']; //pega a hora
 
     if (agendarConsulta($conexao, $id_paciente, $dia, $hora)) { /* chama a função
-    se retornar como true ele toda que deu certo */
+    se retornar como true ele roda que deu certo */
         header("Location: agenda.php");
         exit();
     } else { // se der erro:

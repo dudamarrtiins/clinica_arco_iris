@@ -132,7 +132,7 @@ a propria pag
 method="post" - define o tipo de envio, de uma forma oculta pela requisição
 do HTML, assim não fica vissel na url
 
-name="nome" - cave que identifica o valor, o forms l~e através do $_POST['nome']
+name="nome" - cave que identifica o valor, o forms leva através do $_POST['nome']
 
 required - não deixa ser enviado com campo em branco
 -->

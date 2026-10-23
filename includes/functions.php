@@ -7,9 +7,9 @@ require_once __DIR__ . '/../database/connect.php';
 //recebe o parametro de conexão e as infor do forms
 function cadastrar($conexao, $nome, $cpf, $nasc, $idade, $convenio, $sexo, $telefone)
 {  
-    // CALCULO EXCLUSIVO EM PHP (Sem JavaScript)
+    // idade 
     if (!empty($nasc)) { // trava de segurançã, SE $nasc NÃO ESTIVER VAZIO
-        $dataNascimento = new DateTime($nasc); // converte a string para manipulavel, assimpodendo ser utilizada
+        $dataNascimento = new DateTime($nasc); // converte a string para manipulavel, assim podendo ser utilizada
         $hoje = new DateTime(); //pega a data de hoje
         // Calcula a diferença em anos exatos
         $idade = $hoje->diff($dataNascimento)->y; // o diff calcula a diferença

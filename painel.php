@@ -22,10 +22,10 @@ if ($mes < 1) {
 }
 /* se o user clicar em anterior (jan) ele vai fazer assim:
 mes 1-1 = 0, ai o mes ajusta para dezembro e volta um ano,
-se el clicar em proximo em dez ele faz assim:
+se ele clicar em proximo em dez ele faz assim:
 mes 12 + 1 = 13, ai muda para o mes 1 (jan) e avança um ano */
 
-// formatação para exibição com 2 dígitos no cálculo, ou seja o x vira 0x
+// formatação para exibição com 2 dígitos no cálculo, ou seja o dia aparece certinho
 $mesFormatado = str_pad($mes, 2, '0', STR_PAD_LEFT);
 
 // calculos de navegação (mês anterior e próximo mês) assim ele prepara os valores colocados no botões
@@ -54,11 +54,17 @@ $primeiroDiaSemana = date('w', strtotime("$ano-$mesFormatado-01"));
 
 $todasConsultas = listarConsultas($conexao); 
 
-$agenda = [];
+$agenda = []; // cria o array
 foreach ($todasConsultas as $c) {
-    if (date('m', strtotime($c['dia'])) == $mesFormatado && date('Y', strtotime($c['dia'])) == $ano) {
+    if (date('m', strtotime($c['dia'])) == /*converte
+    o que vem em texto em data normal
+    o date('m') e o outro puxam o dia e ano*/
+    $mesFormatado && date('Y', strtotime($c['dia'])) == $ano) { 
         $dia = (int)date('d', strtotime($c['dia']));
-        $agenda[$dia][] = $c;
+        // ve se a consulta passou no filtro acima, e mostra so o dia
+        $agenda[$dia][] = $c; 
+        // guarda a consulta $c no dia dela
+        // ex: $agenda[23][]
     }
 }
 /* guarda todo esse resultado em um array */

@@ -170,7 +170,7 @@ require_once __DIR__ . '/../includes/functions.php';
             <label for="nasc">Nascimento: </label>
             <input type="date" name="nasc" id="nasc" required>
 
-            <!-- Deixe o campo opcional (sem required) para o utilizador não ser obrigado a digitar nada -->
+            
             <label for="idade">Idade: </label>
             <input type="number" name="idade" id="idade" min="3" placeholder="Calculado ao salvar" readonly>
 

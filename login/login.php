@@ -13,11 +13,15 @@ if (isset($_SESSION['id'])) {
 $erro_login = "";
 
 // processa o formulário ANTES de desenhar o HTML na tela
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == "POST") { // verifica se foi enviado, pelo POST
     $usuario = consulta_user($conexao, $_POST['email']);
+    /* pega e e-mail que a pessoa digitou e busca os dados dela 
+    ai, a variavel recebe as informações sobre a conta */
 
-    if ($usuario && $usuario['email'] == $_POST['email'] && $usuario['senha'] == $_POST['senha']) {
-        $_SESSION['id'] = $usuario['id']; // salva o ID na sessão que já está aberta
+    if ($usuario && $usuario['email'] == $_POST // confere se o usuario realmente existe
+    ['email'] && $usuario['senha'] == $_POST['senha']) {
+        $_SESSION['id'] = $usuario['id']; // comprara se a senha e e-mail é igual ao que foi digitado
+        // o $_SESSION vai salvar o id 
         header("Location: ../painel.php");
         exit();
     } else {
@@ -182,9 +186,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </form>
         </div>
 
-        <?php if (!empty($erro_login)): ?>
+        <?php if (!empty($erro_login)): ?> 
+        <!--ve se a variavel não esta vazia, ve se a algo esta errada-->
             <p class="msg-erro"><?php echo $erro_login; ?></p> <!--mensagem de erro-->
-        <?php endif; ?>
+        <?php endif; ?> <!--fim-->
     </main>
 
     <?php include __DIR__ . '/../includes/footer.php'; ?>
