@@ -64,6 +64,81 @@ A arquitetura do software foi guiada estritamente pela documentação de requisi
 | RNF | Requisito Não Funcional |
 | RN | Regra de Negócio |
 
+
+---------------------
+
+## Como utilizar o projeto?
+
+- crie uma conta
+- logue nessa conta
+  
+ ### Como cadastrar um novo paciente?
+- acesse a página de prontuario
+- nos botões abaixo, acesse o **Adicionar**
+  
+### Como atualizar e apagar?
+- utilizando dos botões do prontuário acesse:
+- **Remover** para inserir o nome do paciente e apagar
+- **Atualizar** para inserir todas as novas informações do paciente
+- **Atenção** - o **Nome** do paciente não pode ser trocado, ele é utilizado para identificar o paciente em todas as páginas!!
+  
+### Como criar um agendamento?
+- acesse a página de **Agenda**
+- Clique em **+novo atendimento**
+- insira o nome do paciente, a data da consulta e o horario
+
+ ### Como trocar o status?
+ - clique em **Consulta realizada** para marcar como consulta realizada
+ - clique em **Cancelar consulta** para marcar como cancelada a consulta
+
+ ### Como Remarcar e Apagar?
+- Clique em **apagar** para apagar
+- Clique em **Remarcar** para inserir as novas informações
+
+### Como vissualizar todas as informações do paciente?
+- Acesse a página de **Consultar**
+- Digite o primeiro nome do paciente para poder vissualizar todas as informações
+
+### Como Adicionar ganhos/pagamentos?
+- Acesse a página de **Gestão**
+- Acesse o **Registrar Ganho**
+- Nessa página insira o valor da consulta **(o valor é fixo de 200.00 reais, o sistema não aceita valores maiores)**
+   - Insira **Apenas ponto .** para separar os reais dos centavos.
+- Insira o nome do paciente pagante
+- Insira o metodo de pagamento (cartão, pix, dinheiro...)
+- Insira o dia que a entrada doi realizada
+ 
+### Como adicionar Gastos?
+- Acesse a página de **Gestão**
+- Acesse o **Registrar Gasto**
+- Nessa página insira o valor do gasto (sem valor maxímo)
+- Insira o motivo da saída (ex: conta do DAE)
+- Insira o dia que a saída foi realizada
+
+### Para que serve o Dashbord?
+A página do dashbord você pode vissualizar a movimentação financeira (entrada e saída) por meio do grafico, que mostra
+todas as suas entradas, saídas e o seu saldo atual.
+
+No calendario você pode vissualizar todas as consultas marcadas
+  **Para que serve as cores?**
+
+- **Azul -** Consulta marcada
+- **Verde -** Consulta Realizada
+- **Vermelho -** Consulta Cancelada
+
+### Regras Gerais:
+- Para apagar um paciente **Primeiro tenha certeza que ele não possui consultas agendadas**
+  - em situações de consultas marcadas, apague primeiro a consulta e depois apague o paciente
+- Como citado na documentação, para o cadastro de pacientes a idade deve ser maior ou igual a três (03)
+    - idades menores são bloqueadas
+ 
+ ### Como sair?
+ - Clique em **Sair** para sair da aplicação
+
+Seus dados não são apagados quando você sai, eles são **salvos e ficam guardados no banco de dados**
+
+--------------------------
+
 ## 3.2 Requisitos Funcionais (RF)
 - **RF-001 (Abertura de Conta):** Permite a abertura de um novo paciente solicitando obrigatoriamente o nome completo do mesmo.
 - **RF-002 (Modificação de Perfil):** Permite ao usuário root modificar qualquer informação dos pacientes.
@@ -407,6 +482,7 @@ http://localhost:8000
 | **1.7** | 20/10/2026 | Atualização e revisão periódica do README. | Maria E |
 | **1.8** | 21/10/2026 | Implementação de validações de idade mínima e limite de entradas. Correção na persistência do nome do paciente no extrato, ajuste na função de atualizar idade, correção do link do `git clone` e adição de comentários no código. | Maria E |
 | **1.9** | 22/10/2026 | Finalização da documentação do código (comentários) e últimas revisões/modificações no README e na documentação técnica. | Maria E |
+| **1.10** | 28/10/2026 | Adicionando instruções de como utilizar o programa. | Maria E |
 
 ---
 ## 10. Conclusão
